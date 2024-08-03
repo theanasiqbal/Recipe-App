@@ -1,8 +1,8 @@
 import React from 'react'
 
-const AlphaPageCard = ({name, src, onClick}) => {
+const AlphaPageCard = ({name, src, key ,onClick}) => {
   return (
-    <div onClick={onClick} className="bg-white rounded-lg flex flex-col items-center justify-center w-full sm:w-1/2 md:w-1/4 lg:w-1/5">
+    <div onClick={onClick} key={key} className="bg-white rounded-lg flex flex-col items-center justify-center sm:w-1/2 md:w-1/4 lg:w-1/5">
       <a href="#">
         <img width={150} height={150} className="rounded-t-lg" src={src} alt={name} />
       </a>

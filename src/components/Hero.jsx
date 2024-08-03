@@ -30,16 +30,16 @@ const Hero = () => {
             <div className='max-md:mb-8 md:w-1/2 flex items-center flex-col justify-between gap-8'>
                 <h1 className='text-7xl text-[#9d3306] font-bold text-center mb-4 font-mono'>Welcome to,<br /><span className='font-extrabold'>Get Recipe</span></h1>
                 <p className='px-4'>"Unlock Your Culinary Creativity and Discover Delicious Recipes Tailored Just for You"</p>
-                <div className='flex justify-evenly gap-2'>
+                <div className='grid grid-cols-1 md:flex md:justify-evenly gap-2'>
                 <button
                     onClick={getRandomRecipe}
-                    className="inline-block rounded-md bg-[#330A05] px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#330A05] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.3),0_4px_18px_0_rgba(0,0,0,0.2)]"
+                    className="inline-block whitespace-nowrap rounded-md bg-[#330A05] px-6 pb-2 pt-2.5 text-sm font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#330A05] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(0,0,0,0.3),0_4px_18px_0_rgba(0,0,0,0.2)]"
                 >
                     Get Random Recipe
                 </button>
                 <Link href={"/category"}
                     
-                    className="inline-block rounded-md border-2 border-[#330A05] px-6 pb-2 pt-2.5 text-sm font-semibold uppercase leading-normal text-[#330A05] shadow-[0_4px_9px_-4px_#330A05] transition duration-150 ease-in-out hover:bg-[#330A05] hover:text-white"
+                    className="inline-block whitespace-nowrap max-md:mt-2 rounded-md border-2 border-[#330A05] px-6 pb-2 pt-2.5 text-sm font-semibold uppercase leading-normal text-[#330A05] shadow-[0_4px_9px_-4px_#330A05] transition duration-150 ease-in-out hover:bg-[#330A05] hover:text-white"
                 >
                     Browse Categories
                 </Link>

@@ -2,11 +2,14 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import AlphaPageCard from '@/components/AlphaPageCard'
+import Pagination from '@/components/Pagination'
 
 const page = () => {
     const [alphabet, setAlphabet] = useState("A")
     const [data, setData] = useState([])
     const [loading, setLoading] = useState(false)
+    const [currentPage, setcurrentPage] = useState(1)
+    const [postsPerPage, setpostsPerPage] = useState(12)
     const router = useRouter()
 
     const alphabets = [];
@@ -31,7 +34,13 @@ const page = () => {
         getMealByAlpha();
     }, [alphabet]);
 
+
+    const lastPostIndex = currentPage * postsPerPage
+    const firstPostindex = lastPostIndex - postsPerPage
+    const currentPost = data.slice(firstPostindex,lastPostIndex)
+
     return (
+        <>
         <div className='mt-14 px-8'>
             <h1 className='font-mono font-semibold text-[#9d3306] text-center text-3xl'>Search By Alphabet</h1>
             <div className='mt-10'>
@@ -63,8 +72,8 @@ const page = () => {
             <div className='max-sm:grid max-sm:grid-cols-2 flex flex-wrap items-center justify-center mt-10 gap-4'>
                 {loading ? (
                     <p className='text-center text-blue-500'>Loading...</p>
-                ) : data.length > 0 ? (
-                    data.map((meal) => (
+                ) : currentPost.length > 0 ? (
+                    currentPost.map((meal) => (
                         <AlphaPageCard
                             key={meal.idMeal}
                             name={meal.strMeal}
@@ -78,6 +87,10 @@ const page = () => {
             </div>
             
         </div>
+        <div className='flex items-center justify-center mt-6'>
+        <Pagination totalPosts={data.length} postsPerPage={postsPerPage} setCurrentPage={setcurrentPage} />
+        </div>
+        </>
   )
 }
 

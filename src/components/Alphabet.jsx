@@ -34,7 +34,7 @@ const Alphabet = () => {
 
     return (
         <div className='mt-14 px-8'>
-            <h1 className='font-mono font-semibold text-[#9d3306] text-center text-3xl'>Search By Alphabet</h1>
+            <h1 className='font-mono sm:font-semibold text-[#9d3306] text-center text-3xl'>Search By Alphabet</h1>
             <div className='mt-10'>
                 <div className="hidden md:flex items-center justify-evenly">
                     {alphabets && alphabets.map((char) => (

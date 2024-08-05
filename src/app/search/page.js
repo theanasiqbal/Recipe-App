@@ -2,10 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import SearchCard from '@/components/searchCard';
 import { useRouter } from 'next/navigation';
+import Pagination from '@/components/Pagination';
 
 const SearchPage = () => {
     const [searchedMeal, setSearchedMeal] = useState('');
     const [data, setData] = useState([]);
+    const [currentPage, setcurrentPage] = useState(1)
+    const [postsPerPage, setpostsPerPage] = useState(12)
     const router = useRouter()
 
     useEffect(() => {
@@ -26,9 +29,13 @@ const SearchPage = () => {
         setSearchedMeal(searchedMeal);
     };
 
+    const lastPostIndex = currentPage * postsPerPage
+    const firstPostindex = lastPostIndex - postsPerPage
+    const currentPost = data.slice(firstPostindex,lastPostIndex)
 
 
     return (
+        <>
         <div className='px-8'>
             <div className='w-full px-8 flex items-center gap-5 justify-center'>
                 <input 
@@ -46,7 +53,7 @@ const SearchPage = () => {
                 </button>
             </div>
             <div className='grid grid-cols-4 max-sm:grid-cols-2 mt-10'>
-                {data && data
+                {currentPost && currentPost
                     .filter(meal => meal.strMeal.toLowerCase().includes(searchedMeal.toLowerCase()))
                     .map((meal) => (
                         <SearchCard 
@@ -58,6 +65,10 @@ const SearchPage = () => {
                     ))}
             </div>
         </div>
+        <div className='flex items-center justify-center mt-6'>
+        <Pagination totalPosts={data.length} postsPerPage={postsPerPage} setCurrentPage={setcurrentPage} />
+        </div>
+        </>
     );
 };
 

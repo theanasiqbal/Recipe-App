@@ -49,7 +49,7 @@ const Hero = () => {
             <div className='md:w-1/2  flex flex-col items-center justify-center mt-4 max-md:mt-12'>
                 {random && (
                     <div>
-                        <h1 className='text-4xl font-semibold text-center mb-5 text-[#9d3306] font-mono'>Random Recipe</h1>
+                        <h1 className='text-4xl sm:font-semibold  text-center mb-5 text-[#9d3306] font-mono'>Random Recipe</h1>
 
                         <figure onClick={() => router.push(`/meal/${random.meals[0].idMeal}`)} className="relative max-w-sm transition-all duration-300 cursor-pointer filter grayscale hover:grayscale-0 hover:text-white mb-6">
                             <a href="#">
